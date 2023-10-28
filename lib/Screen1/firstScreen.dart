@@ -4,6 +4,7 @@ import 'package:travel_news_app/Screen1/listView1.dart';
 import 'package:travel_news_app/Screen1/listView2.dart';
 import 'package:travel_news_app/Screen1/profile.dart';
 import 'package:travel_news_app/Screen1/searchField.dart';
+import 'package:travel_news_app/Screen2/secondScreen.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -19,7 +20,7 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        height: 103,
+        height: 110,
         alignment: Alignment.center,
         child: BottomNavigationBar(
             currentIndex: indexSelected,
@@ -66,7 +67,7 @@ class _FirstScreenState extends State<FirstScreen> {
                         : SvgPicture.asset(
                             'assets/profile_unselected_icon.svg'),
                   ),
-                  label: '')
+                  label: ''),
             ]),
       ),
       body: SingleChildScrollView(
