@@ -3,11 +3,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travel_news_app/Screen1/firstScreen.dart';
 import 'package:travel_news_app/Screen3.dart/thirdScreen.dart';
 
-int indexSelected = 0;
-
-class secondScreen extends StatelessWidget {
+class secondScreen extends StatefulWidget {
   const secondScreen({super.key});
 
+  @override
+  State<secondScreen> createState() => _secondScreenState();
+}
+
+int indexSelected = 1;
+
+class _secondScreenState extends State<secondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +21,31 @@ class secondScreen extends StatelessWidget {
         alignment: Alignment.center,
         child: BottomNavigationBar(
             currentIndex: indexSelected,
+            onTap: (int index) {
+              if (index == 0) {
+                // Check if the bookmark icon is tapped (index 1)
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const FirstScreen()), // Navigate to SecondScreen
+                );
+              }
+              if (index == 3) {
+                // Check if the bookmark icon is tapped (index 1)
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          const thirdScreen()), // Navigate to SecondScreen
+                );
+              } else {
+                setState(() {
+                  indexSelected =
+                      index; // Update the selected index for other items
+                });
+              }
+            },
             iconSize: 19,
             type: BottomNavigationBarType.fixed,
             items: <BottomNavigationBarItem>[

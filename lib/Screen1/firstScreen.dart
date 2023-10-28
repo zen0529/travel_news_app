@@ -5,6 +5,7 @@ import 'package:travel_news_app/Screen1/listView2.dart';
 import 'package:travel_news_app/Screen1/profile.dart';
 import 'package:travel_news_app/Screen1/searchField.dart';
 import 'package:travel_news_app/Screen2/secondScreen.dart';
+import 'package:travel_news_app/Screen3.dart/thirdScreen.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -23,52 +24,71 @@ class _FirstScreenState extends State<FirstScreen> {
         height: 110,
         alignment: Alignment.center,
         child: BottomNavigationBar(
-            currentIndex: indexSelected,
-            onTap: (index) {
+          currentIndex: indexSelected,
+          onTap: (int index) {
+            if (index == 1) {
+              // Check if the bookmark icon is tapped (index 1)
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const secondScreen()), // Navigate to SecondScreen
+              );
+            }
+            if (index == 3) {
+              // Check if the bookmark icon is tapped (index 1)
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const thirdScreen()), // Navigate to SecondScreen
+              );
+            } else {
               setState(() {
-                indexSelected = index;
+                indexSelected =
+                    index; // Update the selected index for other items
               });
-            },
-            iconSize: 19,
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: indexSelected == 0
-                        ? SvgPicture.asset('assets/home_selected_icon.svg')
-                        : SvgPicture.asset('assets/home_unselected_icon.svg'),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: indexSelected == 1
-                        ? SvgPicture.asset('assets/bookmark_selected_icon.svg')
-                        : SvgPicture.asset(
-                            'assets/bookmark_unselected_icon.svg'),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: indexSelected == 2
-                        ? SvgPicture.asset(
-                            'assets/notification_selected_icon.svg')
-                        : SvgPicture.asset(
-                            'assets/notification_unselected_icon.svg'),
-                  ),
-                  label: ''),
-              BottomNavigationBarItem(
-                  icon: Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: indexSelected == 3
-                        ? SvgPicture.asset('assets/profile_selected_icon.svg')
-                        : SvgPicture.asset(
-                            'assets/profile_unselected_icon.svg'),
-                  ),
-                  label: ''),
-            ]),
+            }
+          },
+          iconSize: 19,
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: indexSelected == 0
+                      ? SvgPicture.asset('assets/home_selected_icon.svg')
+                      : SvgPicture.asset('assets/home_unselected_icon.svg'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: indexSelected == 1
+                      ? SvgPicture.asset('assets/bookmark_selected_icon.svg')
+                      : SvgPicture.asset('assets/bookmark_unselected_icon.svg'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: indexSelected == 2
+                      ? SvgPicture.asset(
+                          'assets/notification_selected_icon.svg')
+                      : SvgPicture.asset(
+                          'assets/notification_unselected_icon.svg'),
+                ),
+                label: ''),
+            BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 15),
+                  child: indexSelected == 3
+                      ? SvgPicture.asset('assets/profile_selected_icon.svg')
+                      : SvgPicture.asset('assets/profile_unselected_icon.svg'),
+                ),
+                label: ''),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
